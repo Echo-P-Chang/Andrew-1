@@ -19,7 +19,7 @@ test('部署入口提供首頁、樣式與健康檢查', async () => {
   assert.match(css.headers.get('content-type'), /text\/css/);
   const health = await fetch(`${origin}/healthz`).then(response => response.json());
   assert.equal(health.status, 'ok');
-  assert.equal(health.app, 'andrew1');
+  assert.equal(health.app, 'andrew-1');
 });
 test('伺服器只公開指定的遊戲素材，不公開 repo 或部署設定', async () => {
   for (const file of ['.env', '.git/config', 'README.md', 'server.cjs', 'hosting/release.json', 'hosting/public-files.json', 'scripts/deploy-azure.sh', 'tests/server.test.cjs']) {

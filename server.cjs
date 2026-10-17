@@ -22,7 +22,7 @@ function createServer() {
     try { pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname); }
     catch { response.writeHead(400); response.end(); return; }
     if (pathname === '/healthz') {
-      const body = JSON.stringify({ status: 'ok', app: 'andrew1', version: release.version });
+      const body = JSON.stringify({ status: 'ok', app: 'andrew-1', version: release.version });
       response.writeHead(200, { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) });
       response.end(request.method === 'HEAD' ? undefined : body);
       return;
@@ -67,7 +67,7 @@ function createServer() {
 if (require.main === module) {
   const server = createServer();
   const port = Number(process.env.PORT || 8080);
-  server.listen(port, '0.0.0.0', () => console.log(`Andrew1 listening on port ${port}`));
+  server.listen(port, '0.0.0.0', () => console.log(`Andrew-1 listening on port ${port}`));
   process.on('SIGTERM', () => { server.close(() => process.exit(0)); setTimeout(() => process.exit(0), 10000).unref(); });
 }
 module.exports = { createServer };

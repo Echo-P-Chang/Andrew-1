@@ -63,7 +63,7 @@
 
 ## 部署到 Azure App Service
 
-部署腳本：[`scripts/deploy-azure.sh`](scripts/deploy-azure.sh)。預設目標是 subscription `8a94a7cc-5cff-4be5-89a5-6854f2073765`、resource group `configreader-rg` 裡的 `Andrew1`。
+部署腳本：[`scripts/deploy-azure.sh`](scripts/deploy-azure.sh)。預設目標是 subscription `8a94a7cc-5cff-4be5-89a5-6854f2073765`、resource group `configreader-rg` 裡的 `Andrew-1`。
 
 先安裝 Azure CLI、Node.js 22 以上和 Python 3.9 以上，登入後在 repo 根目錄執行：
 
@@ -72,9 +72,9 @@ az login
 ./scripts/deploy-azure.sh
 ```
 
-腳本會執行測試、打包遊戲、將既有 Linux App Service 設為 Node.js 24，透過 ZIP 部署更新網站，然後確認健康狀態和部署版本。啟動命令使用 `pm2 start /home/site/wwwroot/server.cjs --name andrew1 --no-daemon`；伺服器使用 Azure 提供的 `PORT`。設定方式參考 [Microsoft 的 Node.js App Service 文件](https://learn.microsoft.com/en-us/azure/app-service/configure-language-nodejs?pivots=platform-linux)，ZIP 部署參考 [Microsoft 部署文件](https://learn.microsoft.com/en-us/azure/app-service/deploy-zip)。
+腳本會執行測試、打包遊戲、將既有 Linux App Service 設為 Node.js 24，透過 ZIP 部署更新網站，然後確認健康狀態和部署版本。啟動命令使用 `pm2 start /home/site/wwwroot/server.cjs --name andrew-1 --no-daemon`；伺服器使用 Azure 提供的 `PORT`。設定方式參考 [Microsoft 的 Node.js App Service 文件](https://learn.microsoft.com/en-us/azure/app-service/configure-language-nodejs?pivots=platform-linux)，ZIP 部署參考 [Microsoft 部署文件](https://learn.microsoft.com/en-us/azure/app-service/deploy-zip)。
 
-部署目標網址：<https://andrew1-d9h0g7dphbbvcfde.japanwest-01.azurewebsites.net/>。
+部署目標網址：<https://andrew-1-dybdafg8h9h9dkh5.japanwest-01.azurewebsites.net/>。
 
 認證完全使用 Azure CLI 的既有登入狀態；腳本不取得 publishing profile，也不寫入帳密或 token。Subscription ID、resource group 和 app 名稱是資源識別資訊，不是憑證。`.env`、ZIP 與發布設定檔已列入 `.gitignore`。
 
@@ -83,7 +83,7 @@ az login
 只產生可檢查的 ZIP，不連線 Azure：
 
 ```bash
-./scripts/deploy-azure.sh --package-only /tmp/andrew1.zip
+./scripts/deploy-azure.sh --package-only /tmp/andrew-1.zip
 ```
 
 若之後要部署到另一個既有 Linux App Service，可用非機密的環境變數覆寫目標：

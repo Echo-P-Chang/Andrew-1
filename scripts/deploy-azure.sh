@@ -4,7 +4,7 @@ set -euo pipefail
 
 AZURE_SUBSCRIPTION_ID="${AZURE_SUBSCRIPTION_ID:-8a94a7cc-5cff-4be5-89a5-6854f2073765}"
 AZURE_RESOURCE_GROUP="${AZURE_RESOURCE_GROUP:-configreader-rg}"
-AZURE_WEBAPP_NAME="${AZURE_WEBAPP_NAME:-Andrew1}"
+AZURE_WEBAPP_NAME="${AZURE_WEBAPP_NAME:-Andrew-1}"
 DEPLOY_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PACKAGE_ONLY=""
 
@@ -35,7 +35,7 @@ done
 node -e 'if (Number(process.versions.node.split(".")[0]) < 22) process.exit(1)' || {
   echo 'Please install Node.js 22 or later.' >&2; exit 1;
 }
-DEPLOY_TMP="$(mktemp -d "${TMPDIR:-/tmp}/andrew1-deploy.XXXXXX")"
+DEPLOY_TMP="$(mktemp -d "${TMPDIR:-/tmp}/andrew-1-deploy.XXXXXX")"
 trap 'rm -rf "$DEPLOY_TMP"' EXIT
 DEPLOY_ZIP="$DEPLOY_TMP/app.zip"
 
@@ -83,7 +83,7 @@ APP_HOST="$(az webapp show "${AZURE_ARGS[@]}" --query defaultHostName --output t
 echo "Deploying to $AZURE_RESOURCE_GROUP/$AZURE_WEBAPP_NAME ($APP_HOST)..."
 az webapp config set "${AZURE_ARGS[@]}" \
   --linux-fx-version 'NODE|24-lts' \
-  --startup-file 'pm2 start /home/site/wwwroot/server.cjs --name andrew1 --no-daemon' --output none
+  --startup-file 'pm2 start /home/site/wwwroot/server.cjs --name andrew-1 --no-daemon' --output none
 az webapp config appsettings set "${AZURE_ARGS[@]}" \
   --settings SCM_DO_BUILD_DURING_DEPLOYMENT=false ENABLE_ORYX_BUILD=false --output none
 az webapp deploy "${AZURE_ARGS[@]}" --src-path "$DEPLOY_ZIP" --type zip \
