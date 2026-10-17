@@ -1,0 +1,111 @@
+/* 擊球後，把舞台留給球的軌跡和正在衝刺的跑者。 */
+.audio-controls {display:flex;gap:7px;align-items:center;}
+.score-situation {display:flex;align-items:center;gap:24px;min-width:0;}
+.count-board {display:grid;gap:10px;flex-shrink:0;}
+.count-row {display:flex;align-items:center;gap:9px;font-size:10px;color:#a8baae;}
+.count-row>span:first-child {width:40px;}
+.count-row strong {font:12px ui-monospace,monospace;color:#f5edda;min-width:10px;}
+.count-lights {display:flex;gap:6px;}
+.count-lights i {display:block;width:9px;height:9px;border-radius:50%;background:#ffffff18;border:1px solid #ffffff22;}
+.count-lights i.lit {background:#f3ce6b;border-color:#f7dc9a;box-shadow:0 0 8px #eec66355;}
+.out-lights i.lit {background:#ed8470;border-color:#ffb39f;box-shadow:0 0 8px #ed847055;}
+.pitch-score ol {min-height:23px;}
+.pitch-score li.strikeout-record {color:#f1a18c;background:#e9807015;border-color:#e9807055;}
+.out-flash {position:absolute;inset:0;z-index:4;background:linear-gradient(140deg,#142e2bdd,#342b24c9);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff5df;text-align:center;pointer-events:none;}
+.out-flash>span {font-size:12px;letter-spacing:5px;color:#f0ac84;}
+.out-flash>strong {font:italic 900 110px Georgia,serif;line-height:1.15;color:#f1b381;text-shadow:5px 6px 0 #0003;}
+.out-flash h2 {font-size:30px;letter-spacing:3px;margin:2px 0 12px;}
+.out-flash p {font-size:12px;letter-spacing:1px;margin:0;color:#e7d7bf;}
+.strikeout-play .batter {opacity:.35;}
+.strikeout-play .out-flash {animation:out-announcement .3s ease-out both;}
+.result-stats {gap:20px;}
+.progress-line span {background:#ce8d65;}
+@keyframes out-announcement {from {opacity:0;transform:scale(1.08);} to {opacity:1;transform:scale(1);}}
+@media(max-width:1100px) {
+  .score-situation {gap:15px;}
+  .score-situation .pitch-score li {width:18px;}
+  .count-row {gap:6px;font-size:9px;}
+}
+@media(max-width:900px) {
+  .scoreboard {height:auto;min-height:110px;flex-wrap:wrap;padding-top:15px;padding-bottom:15px;}
+  .score-situation {order:3;width:100%;justify-content:space-between;}
+  .score-situation .pitch-score {width:auto;flex-direction:column;align-items:flex-start;gap:6px;}
+  .count-board {display:flex;gap:20px;}
+}
+@media(max-width:580px) {
+  .masthead {flex-wrap:wrap;height:auto;min-height:100px;padding-top:13px;padding-bottom:12px;gap:12px;}
+  .audio-controls {margin-left:auto;gap:4px;}
+  .audio-controls .icon-button {margin-left:0;padding:7px 6px;font-size:9px;}
+  .score-situation {gap:12px;align-items:flex-start;}
+  .count-board {display:grid;gap:8px;}
+  .count-row {gap:6px;}
+  .count-lights i {width:8px;height:8px;}
+  .score-situation .pitch-score {max-width:61%;}
+  .score-situation .pitch-score ol {gap:3px;flex-wrap:wrap;}
+  .score-situation .pitch-score li {width:18px;height:20px;}
+  .score-situation .pitch-score>span {font-size:7px;}
+  .out-flash>strong {font-size:80px;}
+  .out-flash h2 {font-size:24px;}
+}
+.field .hit-flash {
+  inset: 77px auto auto 22px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 13px 19px;
+  border-left: 4px solid #f2c66e;
+  background: linear-gradient(90deg, #102e2de8, #102e2d55);
+  border-radius: 0 5px 5px 0;
+  transform: none;
+  text-shadow: 0 2px 8px #163c37;
+}
+.field .hit-flash small {font-size: 10px; letter-spacing: 1px; color: #e3d8b7;}
+.field .hit-flash strong {font-size: clamp(24px, 3vw, 41px); line-height: 1.45; letter-spacing: 2px;}
+.field .hit-flash > span {font-size: 9px; letter-spacing: 3px; color: #edc26d;}
+.live-play .hit-flash {animation: play-announcement 2.9s both;}
+.live-play .bat {animation: full-swing .65s .1s both;}
+.live-play .batter {animation: batter-turn .65s .1s both; transform-origin: 390px 530px;}
+.live-play .stadium {animation: contact-jolt .22s .33s both;}
+.running-call {
+  position: absolute;
+  top: 65px;
+  right: 21px;
+  z-index: 3;
+  padding: 8px 12px;
+  border: 1px solid #ecc57466;
+  background: #14352edb;
+  color: #ffe1a0;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+}
+.live-play .running-call {animation: runner-announcement 2.9s both;}
+.scoring-play .running-call {background: #7d4a21e8; color: #fff0c5;}
+.field-runner {filter: drop-shadow(0 0 2px #fff2b866);}
+@keyframes play-announcement {
+  0%, 12% {opacity: 0; transform: translateX(-20px) scale(.95);}
+  20%, 65% {opacity: 1; transform: translateX(0) scale(1);}
+  85%, 100% {opacity: 0; transform: translateX(0);}
+}
+@keyframes runner-announcement {0%, 26% {opacity: 0;} 35%, 92% {opacity: 1;} 100% {opacity: 0;}}
+@keyframes full-swing {
+  0% {transform: rotate(-22deg);}
+  24% {transform: rotate(-38deg);}
+  35% {transform: rotate(105deg);}
+  75%, 100% {transform: rotate(155deg);}
+}
+@keyframes batter-turn {0%, 35% {transform: rotate(0);} 55%, 100% {transform: rotate(9deg);}}
+@keyframes contact-jolt {0%, 100% {transform: translate(0);} 20% {transform: translate(-3px, 2px);} 50% {transform: translate(3px, -2px);} 75% {transform: translate(-1px, 1px);}}
+@media (max-width: 780px) {
+  .field .hit-flash {top: 65px; left: 14px; padding: 9px 12px;}
+  .field .hit-flash small {font-size: 8px;}
+  .field .hit-flash strong {font-size: 24px;}
+  .field .hit-flash > span {font-size: 7px;}
+  .running-call {top: auto; bottom: 80px; left: 14px; right: auto; font-size: 10px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-play .hit-flash {opacity: 1; transform: none;}
+  .live-play .running-call {opacity: 1;}
+}

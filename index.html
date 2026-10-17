@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102c2b">
+  <title>注音打擊王｜你的主場，開打！</title>
+  <link rel="icon" href="assets/baseball.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ballpark.css">
+  <link rel="stylesheet" href="challenge.css">
+  <link rel="stylesheet" href="layout.css">
+  <script src="game-core.js" defer></script>
+  <script src="effects.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="注音打擊王首頁"><img src="assets/baseball.svg" alt="" width="38" height="38"><span>注音打擊王<small>THE BOPOMOFO BALLPARK</small></span></a>
+    <div class="header-note"><span class="live-dot"></span> 你的主場，開打！</div>
+    <div class="audio-controls" aria-label="球場聲音設定">
+      <button class="icon-button" id="music-toggle" aria-pressed="true">配樂：開</button>
+      <button class="icon-button" id="cheer-toggle" aria-pressed="true">加油：開</button>
+      <button class="icon-button" id="sound-toggle" aria-pressed="true" title="關閉所有聲音">聲音：開</button>
+      <details class="mix-controls"><summary>音量</summary><div class="mix-panel"><label for="music-volume">背景音樂 <output id="music-volume-label">75%</output></label><input id="music-volume" type="range" min="0" max="100" value="75"><label for="effect-volume">音效與加油 <output id="effect-volume-label">75%</output></label><input id="effect-volume" type="range" min="0" max="100" value="75"></div></details>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">LITTLE LEAGUE · BIG DREAMS</p><h1 id="page-title">每一次練習，都是一支好球。</h1><p class="intro-copy">找到注音的按鍵，揮出屬於你的安打！</p></div>
+      <label class="level-picker">今天練什麼？<select id="level"><option value="rookie">新秀練習 · 8 個注音</option><option value="all">完整練習 · 37 個注音</option><option value="tones">進階練習 · 注音＋聲調</option></select></label>
+    </section>
+
+    <section class="broadcast" aria-label="棒球打擊練習">
+      <div class="scoreboard">
+        <div class="score-team"><span class="team-badge">A</span><div><small>主場球隊</small><strong>小小強打隊</strong></div><span id="score" class="score-number">0</span><small class="score-unit">得分</small></div>
+        <div class="score-situation">
+          <div class="count-board">
+            <div class="count-row"><span>好球 S</span><span class="count-lights" id="strike-lights" role="img" aria-label="0 好球"><i></i><i></i><i></i></span><strong id="strikes">0</strong></div>
+            <div class="count-row"><span>出局 O</span><span class="count-lights out-lights" id="out-lights" role="img" aria-label="0 人出局"><i></i><i></i><i></i></span><strong id="outs">0</strong></div>
+          </div>
+          <div class="pitch-score"><span>最近打席 · H 安打 / HR 全壘打 / K 三振</span><ol id="pitch-track" aria-label="最近打席紀錄"></ol></div>
+        </div>
+        <div class="score-stats"><div><small>安打</small><strong id="hits">0</strong></div><div><small>連續答對</small><strong id="streak">0</strong></div></div>
+      </div>
+
+      <div class="game-layout">
+        <div class="field" id="field">
+          <div class="field-bug"><span class="live-dot"></span> 主場直播 <span class="bug-divider">|</span> 注音聯盟</div>
+          <div class="field-weather">夜間練習賽 <span>24°</span></div>
+          <img class="stadium" src="assets/stadium.svg" alt="從本壘後方望向投手丘的夜間棒球場，兩側看台亮起球場燈光。">
+          <div class="field-caption"><span class="caption-tag">打擊練習</span><span id="field-comment">小小強打隊，準備上場！</span></div>
+          <svg class="action-layer" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <g id="runner-sprite">
+                <ellipse class="runner-shadow" cy="1" rx="13" ry="4" fill="#123f30" opacity=".35"/>
+                <g class="runner-body">
+                  <path class="runner-leg left-leg" d="M-4-15 0-7-6 0" fill="none" stroke="#fff7df" stroke-width="6" stroke-linecap="round"/>
+                  <path class="runner-leg right-leg" d="m4-15 0 8 6 7" fill="none" stroke="#fff7df" stroke-width="6" stroke-linecap="round"/>
+                  <path class="runner-arm left-arm" d="m-6-31-7 7 6 5" fill="none" stroke="#edc16c" stroke-width="5" stroke-linecap="round"/>
+                  <path class="runner-arm right-arm" d="m6-31 7 7-6 5" fill="none" stroke="#edc16c" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M0-33v17" stroke="#f0c268" stroke-width="17" stroke-linecap="round"/>
+                  <path d="M-6-17H6" stroke="#153e38" stroke-width="3"/>
+                  <text x="0" y="-23" text-anchor="middle" fill="#173c37" font-size="11" font-family="sans-serif" font-weight="900">A</text>
+                  <circle cy="-46" r="8" fill="#dca888"/>
+                  <path d="M-9-46q-1-14 11-10 7 2 7 10z" fill="#e9b653"/><path d="M4-48h9" stroke="#e9b653" stroke-width="4" stroke-linecap="round"/>
+                </g>
+              </g>
+            </defs>
+            <g id="runner-layer"></g>
+            <g id="batter" class="batter"><ellipse cx="390" cy="569" rx="38" ry="8" fill="#142c27" opacity=".28"/><path d="M380 516l-13 49m29-49 14 48" stroke="#eee9db" stroke-width="15" stroke-linecap="round"/><path d="m364 568 12 0m26 0h17" stroke="#172c3d" stroke-width="10" stroke-linecap="round"/><path d="M385 469v48" stroke="#f4f0e5" stroke-width="32" stroke-linecap="round"/><path d="M369 480l24 14 25-18" fill="none" stroke="#eee9db" stroke-width="12" stroke-linecap="round"/><text x="378" y="505" fill="#173e43" font-size="20" font-family="sans-serif" font-weight="800">9</text><circle cx="384" cy="453" r="16" fill="#d8a080"/><path d="M367 452q-4-25 18-23 18 1 18 22z" fill="#173e43"/><path d="M397 447h13" stroke="#173e43" stroke-width="7" stroke-linecap="round"/><g class="bat"><path d="m412 478-16-57" stroke="#d4a66a" stroke-width="8" stroke-linecap="round"/><path d="m412 478-4-14" stroke="#f2ead7" stroke-width="6"/></g></g>
+            <g id="ball-effects" opacity="0">
+              <ellipse id="ball-shadow" rx="12" ry="4" fill="#102d27" opacity=".35"/>
+              <path id="ball-trail" fill="none" stroke="#ffe2a0" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+              <g id="play-ball"><circle r="10" fill="#fffdf1" stroke="#dcc994" stroke-width="1"/><path d="M-6-7q7 7 0 14M6-7q-7 7 0 14" stroke="#c15c46" stroke-width="1.5" fill="none"/></g>
+            </g>
+            <g id="contact-burst" opacity="0" transform="translate(430 478)"><circle r="27" fill="#fff2a9" opacity=".7"/><g stroke="#ffe49b" stroke-width="5" stroke-linecap="round"><path d="M-40 0h-15M40 0h15M0-40v-15M0 40v15M-29-29l-10-10M29-29l10-10M-29 29l-10 10M29 29l10 10"/></g></g>
+            <g id="run-celebration" opacity="0"><ellipse cx="500" cy="530" rx="40" ry="18" fill="none" stroke="#ffe29a" stroke-width="5"/><text x="500" y="487" text-anchor="middle" fill="#fff0b2" font-size="38" font-family="sans-serif" font-weight="900">+1 分！</text></g>
+          </svg>
+          <div class="hit-flash" id="hit-flash" aria-hidden="true"><small>漂亮的一擊！</small><strong>滾地安打！</strong><span>GROUND BALL</span></div>
+          <div class="running-call" id="running-call" aria-hidden="true">快跑！往下一個壘包！</div>
+          <div class="miss-call" id="miss-call" aria-hidden="true"><strong>未揮棒，好球！</strong><span>五秒到了，投手出手！</span></div>
+          <div class="out-flash" id="out-flash" hidden aria-hidden="true"><span>STRIKE THREE</span><strong>K</strong><h2>三振出局！</h2><p id="out-call">換下一位打者，再接再厲！</p></div>
+          <div class="base-panel"><small>壘上跑者</small><svg viewBox="0 0 90 78" role="img" id="bases-svg" aria-label="目前壘包無人"><path d="M45 8 78 39 45 69 12 39z" fill="none" stroke="#ffffff44" stroke-width="1.5"/><path id="base-2" d="m45 1 8 8-8 8-8-8z"/><path id="base-1" d="m79 31 8 8-8 8-8-8z"/><path id="base-3" d="m11 31 8 8-8 8-8-8z"/><path d="m40 65 10 0 0 7-5 5-5-5z" fill="#f3f0e4"/></svg><span id="base-label">等待第一支安打</span></div>
+        </div>
+
+        <aside class="dugout" aria-label="打擊題目">
+          <div class="at-bat"><span class="eyebrow">現在輪到你打擊</span><span id="ball-counter">準備上場</span></div>
+          <div id="play-panel">
+            <div class="answer-clock" id="answer-clock"><div><span id="clock-label">每題答題時間</span><strong><span id="clock-seconds">5.0</span><small> 秒</small></strong></div><div class="clock-track"><span id="clock-fill"></span></div></div>
+            <p id="prompt-label" class="prompt-label">今天的第一個挑戰</p>
+            <div id="target" class="target">ㄅ</div>
+            <p id="key-clue" class="key-clue">找到鍵盤上的 <kbd>1</kbd></p>
+            <p id="feedback" class="feedback" role="status" aria-live="polite">每題 5 秒；1 秒內答對，全壘打！</p>
+            <button class="primary-button" id="start">開始打擊 <span>↗</span></button>
+            <button class="hint-button" id="hint" hidden>找不到按鍵？給我提示 <span>↗</span></button>
+            <div class="progress-line"><span id="progress-fill"></span></div>
+            <p class="round-note" id="round-note">每題 5 秒 · 答錯或超時記好球 · 3 出局結束</p>
+            <div class="live-mastery"><span>本關熟練度</span><strong><span id="mastery-live">0</span><small> / 100</small></strong><span id="home-runs-live">0 支全壘打</span></div>
+          </div>
+          <div id="result-panel" hidden>
+            <p class="result-kicker">NICE GAME!</p><h2>本關結束！</h2><p id="result-message"></p>
+            <div class="result-stats"><div><strong id="result-runs">0</strong><span>得分</span></div><div><strong id="result-hits">0</strong><span>安打</span></div><div><strong id="result-accuracy">100%</strong><span>按鍵正確率</span></div></div>
+            <div class="mastery-result"><div><span>本關熟練度</span><strong><span id="result-mastery">0</span><small> / 100</small></strong><b id="result-rank">新秀打者</b></div><div class="mastery-track"><span id="mastery-fill"></span></div><p><span>平均答對 <strong id="result-average">—</strong></span><span>最快 <strong id="result-fastest">—</strong></span></p><p><span>全壘打 <strong id="result-home-runs">0 支</strong></span><span>超時 <strong id="result-timeouts">0 次</strong></span></p></div>
+            <p class="review-title" id="review-title">今天練過的注音</p><div class="review-symbols" id="review-symbols"></div>
+            <button class="primary-button" id="again">再挑戰一關 <span>↗</span></button>
+          </div>
+          <div class="coach-note"><span class="coach-icon">✦</span><p id="coach-copy">教練提醒：先切換到<strong>英文輸入法</strong>，就能用鍵盤打擊囉！</p></div>
+        </aside>
+        <section class="keyboard-section" aria-labelledby="keyboard-title">
+      <div class="keyboard-heading"><div><h2 id="keyboard-title">你的打擊練習鍵盤</h2><span>標準注音配置 · 對照實體鍵盤練習</span></div><label class="hint-switch"><input id="auto-hint" type="checkbox" checked><span class="switch-track"></span>顯示按鍵提示</label></div>
+      <div class="keyboard" id="keyboard" aria-label="注音鍵盤對照表"></div>
+      <div class="keyboard-footer"><span><i class="legend-dot"></i>亮起的按鍵，就是這一球的答案</span><span>也可以點選畫面上的按鍵練習</span></div>
+        </section>
+      </div>
+    </section>
+    <footer class="page-footer"><span>從第一支安打，開始你的注音旅程。</span><span>MADE FOR LITTLE SLUGGERS <span class="footer-ball">⚾</span></span></footer>
+  </main>
+</body>
+</html>

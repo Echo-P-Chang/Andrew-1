@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#223f51"/><stop offset=".6" stop-color="#82958c"/><stop offset="1" stop-color="#c7bc99"/></linearGradient>
+    <linearGradient id="grass" x2="0" y2="1"><stop stop-color="#4e7761"/><stop offset="1" stop-color="#224f3e"/></linearGradient>
+    <linearGradient id="dirt" x2="0" y2="1"><stop stop-color="#b18a64"/><stop offset="1" stop-color="#9d7352"/></linearGradient>
+    <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#294f4a"/><stop offset="1" stop-color="#173c36"/></linearGradient>
+    <radialGradient id="light"><stop stop-color="#fff5d1" stop-opacity=".5"/><stop offset=".3" stop-color="#fff5d1" stop-opacity=".12"/><stop offset="1" stop-color="#fff5d1" stop-opacity="0"/></radialGradient>
+    <pattern id="seats" width="18" height="15" patternUnits="userSpaceOnUse"><rect width="18" height="15" fill="#334b49"/><rect x="3" y="5" width="10" height="5" rx="2" fill="#64746a"/><circle cx="8" cy="4" r="2" fill="#c1af8b"/><path d="M0 14h18" stroke="#253f3f" stroke-width="2"/></pattern>
+    <pattern id="grass-lines" width="1000" height="95" patternUnits="userSpaceOnUse"><rect width="1000" height="47" fill="#aec193" opacity=".06"/></pattern>
+    <pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".5" fill="#fff" opacity=".07"/><circle cx="4" cy="3" r=".5" fill="#000" opacity=".06"/></pattern>
+    <g id="fielder"><ellipse cy="25" rx="11" ry="3" fill="#183f32" opacity=".4"/><path d="m-4 9-3 14m11-14 4 14" stroke="#e2ded0" stroke-width="4" stroke-linecap="round"/><path d="M0-3v13" stroke="#b9c6ba" stroke-width="10" stroke-linecap="round"/><path d="m-4 0-7 8m15-8 4 8" stroke="#b9c6ba" stroke-width="3"/><circle cy="-11" r="5" fill="#c99b7e"/><path d="M-6-12q0-9 9-5l3 5z" fill="#284942"/><path d="m-8 9-4 1" stroke="#8f6745" stroke-width="5" stroke-linecap="round"/></g>
+    <g id="floodlight"><path d="M0 0v175" stroke="#546562" stroke-width="5"/><path d="m-22 9 22 22 22-22" fill="none" stroke="#546562" stroke-width="3"/><rect x="-33" y="-14" width="66" height="22" rx="2" fill="#3a514f"/><g fill="#fff0c7"><rect x="-29" y="-10" width="9" height="5" rx="1"/><rect x="-16" y="-10" width="9" height="5" rx="1"/><rect x="-3" y="-10" width="9" height="5" rx="1"/><rect x="10" y="-10" width="9" height="5" rx="1"/><rect x="23" y="-10" width="6" height="5" rx="1"/><rect x="-29" y="0" width="9" height="5" rx="1"/><rect x="-16" y="0" width="9" height="5" rx="1"/><rect x="-3" y="0" width="9" height="5" rx="1"/><rect x="10" y="0" width="9" height="5" rx="1"/><rect x="23" y="0" width="6" height="5" rx="1"/></g><ellipse cy="-3" rx="110" ry="80" fill="url(#light)"/></g>
+  </defs>
+  <rect width="1000" height="620" fill="url(#sky)"/>
+  <circle cx="755" cy="73" r="14" fill="#f2e8c6" opacity=".73"/>
+  <path d="M0 183 64 162 123 176 200 148 280 178 345 141 423 164 504 146 583 172 678 141 756 167 844 132 945 155 1000 141V265H0" fill="#3d5956" opacity=".38"/>
+  <path d="M0 206 75 185 156 198 213 170 318 205 411 178 497 197 609 179 706 204 824 173 930 190 1000 172v85H0" fill="#344d49" opacity=".65"/>
+  <g stroke="#35504b" stroke-width="3" fill="none"><path d="M28 213v-51m17 50v-33m844 25v-36m23 41v-52m17 52v-40m-773 42v-35m20 38v-30"/></g>
+  <path d="M0 223 110 206 263 213 385 225h232l128-12 146-7 109 17v169H0" fill="#1d3737"/>
+  <path d="M0 229 107 214 261 220 382 238h235l129-18 148-6 106 15v119l-122-48-140-37-120 6H382l-120-6-140 37L0 348z" fill="url(#seats)"/>
+  <g stroke="#263f3c" stroke-width="7" fill="none"><path d="m0 251 105-12 159 5 119 13h233l125-13 155-5 104 12M0 279l104-18 159-1 119 16h235l124-16 155 1 104 18M0 311l109-28 151-2m482 0 153 2 105 28"/></g>
+  <g fill="#223e3c"><path d="m91 216 12-2 38 91-13 4zM258 219l10 2 23 59-13 4zM894 215l13 3-36 91-13-4zM742 222l10-2-20 64-13-4z"/></g>
+  <g transform="translate(500 197)"><rect x="-93" y="-48" width="186" height="73" rx="3" fill="#183c38" stroke="#66735a" stroke-width="3"/><text text-anchor="middle" x="0" y="-28" fill="#d4c485" font-size="9" font-family="sans-serif" letter-spacing="3">BOPOMOFO FIELD</text><path d="M-78-19H78" stroke="#697a58" stroke-width=".8"/><g fill="#d6d1a0" font-size="8" font-family="monospace"><text x="-74" y="-5">TEAM</text><text x="-28" y="-5">1 2 3 4 5  R H</text><text x="-74" y="9">AWAY</text><text x="-28" y="9">0 0 0 0 0  0 0</text><text x="-74" y="21">HOME</text><text x="-28" y="21">- - - - -  0 0</text></g></g>
+  <use href="#floodlight" transform="translate(116 89)"/><use href="#floodlight" transform="translate(879 89)"/><use href="#floodlight" transform="translate(323 155) scale(.6)"/><use href="#floodlight" transform="translate(683 155) scale(.6)"/>
+  <path d="M0 339Q500 167 1000 339V620H0" fill="url(#grass)"/>
+  <path d="M0 339Q500 167 1000 339V620H0" fill="url(#grass-lines)"/>
+  <path d="M0 322q500-170 1000 0v27q-500-161-1000 0z" fill="url(#wall)"/>
+  <path d="M0 322q500-170 1000 0" fill="none" stroke="#c1b26b" stroke-width="3"/>
+  <g fill="#b7c0a0" opacity=".58" font-family="sans-serif" font-weight="700"><text x="95" y="311" transform="rotate(-12 95 311)" font-size="14" letter-spacing="3">PLAY WITH HEART</text><text x="465" y="258" font-size="13" letter-spacing="3">400</text><text x="741" y="291" transform="rotate(11 741 291)" font-size="14" letter-spacing="3">DREAM BIG</text></g>
+  <g stroke="#8fa27a" stroke-width="1" opacity=".18"><path d="M200 286v17m100-39v24m100-39v25m200-25v25m100-10v24m100-2v17"/></g>
+  <path d="M34 620 500 314 966 620" fill="none" stroke="#b18a64" stroke-width="25"/>
+  <path d="m500 531-206-130 206-97 206 97z" fill="url(#dirt)"/>
+  <path d="m500 488-153-91 153-69 153 69z" fill="#417050"/>
+  <path d="m500 488-153-91 153-69 153 69z" fill="url(#grass-lines)"/>
+  <ellipse cx="500" cy="530" rx="74" ry="37" fill="url(#dirt)"/>
+  <ellipse cx="500" cy="386" rx="35" ry="15" fill="#b18b63"/>
+  <ellipse cx="500" cy="383" rx="29" ry="11" fill="#bd966d"/>
+  <path d="M0 620 500 530 1000 620" fill="url(#dirt)" opacity=".12"/>
+  <g stroke="#f4ead1" stroke-width="2" fill="none" opacity=".82"><path d="M92 620 500 530 908 620M500 530 294 401 36 300M500 530 706 401 964 300"/><path d="m453 518 19 2v24l-19-2zM527 520l19-2v24l-19 2z" stroke-width="1.2"/></g>
+  <g fill="#eee7d6"><path d="m494 523h12v8l-6 5-6-5z"/><path d="m699 397 8-4 9 6-8 5zM491 306l9-4 9 4-9 4zM284 399l9-6 8 4-8 7z"/><rect x="492" y="383" width="16" height="3" rx="1"/></g>
+  <use href="#fielder" transform="translate(500 351) scale(1.03)"/>
+  <use href="#fielder" transform="translate(262 375) scale(.7)"/><use href="#fielder" transform="translate(739 374) scale(.7)"/>
+  <use href="#fielder" transform="translate(405 323) scale(.65)"/><use href="#fielder" transform="translate(609 325) scale(.65)"/>
+  <use href="#fielder" transform="translate(210 299) scale(.5)"/><use href="#fielder" transform="translate(500 279) scale(.45)"/><use href="#fielder" transform="translate(799 298) scale(.5)"/>
+  <path d="M0 568 263 620H0M1000 568 737 620h263" fill="#152e2e"/>
+  <path d="m0 568 263 52m737-52-263 52" stroke="#6f7d6c" stroke-width="4"/>
+  <rect width="1000" height="620" fill="url(#grain)"/>
+</svg>

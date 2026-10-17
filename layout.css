@@ -1,0 +1,143 @@
+/* 球場和鍵盤共用左欄；題目固定在右欄，依瀏覽器可用高度分配空間。 */
+.keyboard-section {grid-column:1 / -1;margin-top:0;border-radius:0;border-width:1px 0 0;}
+@media (min-width:760px) and (min-height:540px) {
+  body {height:100dvh;display:flex;flex-direction:column;}
+  .masthead {width:100%;max-width:1440px;height:48px;flex:0 0 48px;padding:0 24px;gap:18px;}
+  .brand {font-size:18px;gap:9px;}
+  .brand img {width:29px;height:29px;}
+  .brand small {font-size:6px;letter-spacing:1.5px;}
+  .header-note {font-size:10px;}
+  .audio-controls {margin-left:auto;}
+  .icon-button {font-size:10px;padding:7px 9px;}
+  .mix-controls summary {font-size:10px;padding:7px 9px;}
+  main {width:100%;max-width:1440px;flex:1;min-height:0;margin:0 auto;padding:10px 24px 12px;display:flex;flex-direction:column;gap:10px;}
+  .intro {flex:0 0 40px;min-height:0;margin:0;align-items:center;gap:16px;}
+  .intro .eyebrow,.intro-copy {display:none;}
+  h1 {font-size:22px;line-height:1.3;}
+  .level-picker {flex-direction:row;align-items:center;gap:9px;font-size:10px;min-width:0;}
+  .level-picker select {padding:7px 25px 7px 9px;font-size:11px;}
+  .broadcast {flex:1;min-height:0;display:flex;flex-direction:column;}
+  .scoreboard {flex:0 0 56px;height:56px;min-height:0;padding:0 18px;gap:16px;flex-wrap:nowrap;}
+  .score-team {flex:0 0 auto;gap:10px;}
+  .score-team strong {font-size:13px;}
+  .score-team small {font-size:8px;margin-bottom:3px;}
+  .team-badge {width:29px;height:29px;font-size:20px;}
+  .score-number {font-size:30px;margin-left:10px;}
+  .score-situation {order:0;width:auto;gap:18px;align-items:center;}
+  .count-board {display:grid;gap:6px;}
+  .count-row {font-size:9px;gap:7px;}
+  .score-situation .pitch-score {order:0;flex-direction:column;align-items:flex-start;gap:5px;width:auto;max-width:none;}
+  .pitch-score>span {font-size:7px;letter-spacing:.7px;}
+  .pitch-score ol {gap:4px;min-height:20px;}
+  .score-situation .pitch-score li {width:20px;height:20px;font-size:10px;}
+  .score-stats {gap:18px;padding-left:18px;}
+  .score-stats small {font-size:8px;margin-bottom:3px;}
+  .score-stats strong {font-size:20px;}
+  .game-layout {flex:1;min-height:0;grid-template-columns:minmax(0,1fr) 280px;grid-template-rows:minmax(0,1fr) 194px;}
+  .field {grid-column:1;grid-row:1;min-height:0;aspect-ratio:auto;}
+  .field .stadium,.field .action-layer {top:auto;bottom:0;height:125%;}
+  .field-bug {left:14px;top:12px;font-size:8px;padding:7px 9px;}
+  .field-weather {top:21px;right:15px;font-size:8px;}
+  .field-caption {min-height:39px;padding:12px 14px 10px;gap:9px;font-size:10px;flex-direction:row;align-items:center;}
+  .caption-tag {padding:4px 6px;font-size:8px;}
+  .base-panel {right:14px;bottom:48px;width:78px;padding:7px;}
+  .base-panel svg {width:49px;margin:4px auto;}
+  .base-panel small {font-size:7px;}
+  .base-panel>span {font-size:7px;}
+  .field .hit-flash {top:49px;left:14px;padding:9px 14px;}
+  .field .hit-flash strong {font-size:31px;}
+  .field .hit-flash small {font-size:8px;}
+  .home-run-play .hit-flash strong {font-size:40px;}
+  .home-run-play .hit-flash>span {font-size:11px;}
+  .running-call {top:13px;right:14px;bottom:auto;left:auto;font-size:10px;padding:6px 9px;}
+  .out-flash>strong {font-size:73px;}
+  .out-flash h2 {font-size:23px;margin:0 0 8px;}
+  .out-flash>span {font-size:9px;}
+  .out-flash p {font-size:10px;}
+  .dugout {grid-column:2;grid-row:1 / 3;min-height:0;padding:14px 16px 12px;border-left:1px solid #dfe5d8;overflow:auto;scrollbar-width:thin;}
+  .at-bat {margin-bottom:8px;flex-shrink:0;}
+  .at-bat .eyebrow,.at-bat>span:last-child {font-size:9px;}
+  .answer-clock {padding:7px 9px;margin-bottom:8px;}
+  .answer-clock strong {font-size:21px;}
+  .clock-track {margin-top:5px;}
+  .prompt-label {font-size:10px;margin:4px 0 0;}
+  .dugout .target {height:clamp(82px,14vh,124px);font-size:clamp(76px,12vh,108px);}
+  .key-clue {margin:0 0 8px;min-height:25px;line-height:25px;font-size:11px;}
+  .feedback {min-height:30px;margin:0 0 8px;font-size:10px;line-height:1.5;}
+  .primary-button {padding:9px 12px;font-size:12px;}
+  .hint-button {padding:9px 8px;}
+  .progress-line {margin:11px 0 8px;}
+  .round-note {font-size:8px;line-height:1.6;}
+  .live-mastery {padding-top:9px;margin-top:9px;}
+  .dugout .coach-note {padding-top:10px;}
+  .coach-note p {font-size:9px;line-height:1.6;}
+  .result-kicker {font-size:8px;margin:4px 0 6px;}
+  .dugout h2 {font-size:24px;margin:4px 0 8px;}
+  #result-message {font-size:10px;line-height:1.6;margin:6px 0;}
+  .result-stats {margin:10px 0;gap:20px;}
+  .result-stats strong {font-size:25px;}
+  .result-stats span {font-size:8px;}
+  .mastery-result {padding:9px;margin-bottom:10px;}
+  .mastery-result p {font-size:9px;}
+  .review-title {margin:8px 0 5px;}
+  .review-symbols {gap:4px;margin-bottom:10px;}
+  .review-symbols span {font-size:10px;padding:3px 5px;}
+  .keyboard-section {grid-column:1;grid-row:2;min-width:0;padding:8px 16px;border-top:1px solid #dbe3d3;}
+  .keyboard-heading {margin-bottom:8px;min-height:14px;}
+  .keyboard-heading>div {flex-direction:row;align-items:center;gap:10px;}
+  .keyboard-heading h2 {font-size:11px;}
+  .keyboard-heading>div>span {font-size:8px;}
+  .hint-switch {font-size:9px;}
+  .keyboard,.keyboard-footer {max-width:none;width:100%;}
+  .keyboard-row {gap:5px;margin-bottom:4px;}
+  .keyboard-row:last-child {margin-bottom:0;}
+  .key {height:32px;}
+  .key .latin-key {font-size:9px;left:6px;top:5px;}
+  .key .zhuyin-key {font-size:21px;margin-left:13px;}
+  .keyboard-footer {margin-top:5px;font-size:7px;line-height:1.5;}
+  .page-footer {display:none;}
+}
+@media (min-width:760px) and (max-width:1000px) and (min-height:540px) {
+  .masthead,main {padding-left:16px;padding-right:16px;}
+  .header-note {display:none;}
+  h1 {font-size:19px;}
+  .game-layout {grid-template-columns:minmax(0,1fr) 250px;}
+  .scoreboard {padding:0 12px;gap:10px;}
+  .score-situation {gap:12px;}
+  .score-team strong {font-size:11px;}
+  .score-team {gap:7px;}
+  .score-stats {gap:10px;padding-left:10px;}
+  .score-situation .pitch-score li {width:17px;}
+  .count-row {gap:5px;font-size:8px;}
+  .count-row>span:first-child {width:34px;}
+  .count-lights {gap:4px;}
+  .dugout {padding-left:12px;padding-right:12px;}
+  .keyboard-heading>div>span {display:none;}
+  .keyboard-row.row-1 {margin-left:13px;margin-right:25px;}
+  .keyboard-row.row-2 {margin-left:20px;margin-right:18px;}
+  .keyboard-row.row-3 {margin-left:33px;margin-right:5px;}
+  .key .latin-key {font-size:8px;left:4px;}
+  .key .zhuyin-key {font-size:19px;margin-left:10px;}
+  .field-weather {display:none;}
+}
+@media (max-width:759px) {
+  .game-layout {grid-template-columns:1fr;}
+  .field {width:100%;min-width:0;min-height:260px;aspect-ratio:1.6;}
+  .keyboard-section {grid-column:1;}
+}
+@media (min-width:760px) and (min-height:540px) and (max-height:620px) {
+  .dugout {padding-top:11px;padding-bottom:10px;}
+  .at-bat {margin-bottom:6px;}
+  .answer-clock {margin-bottom:6px;padding:6px 8px;}
+  .prompt-label {display:none;}
+  .dugout .target {height:76px;font-size:76px;}
+  .key-clue {margin-bottom:6px;}
+  .feedback {min-height:28px;margin-bottom:6px;}
+  .progress-line {display:none;}
+  .round-note {margin-top:9px;}
+  .live-mastery {padding-top:7px;margin-top:7px;}
+  .dugout .coach-note {padding-top:8px;}
+  .coach-note p {font-size:8px;line-height:1.45;}
+  .result-kicker {display:none;}
+  .dugout h2 {font-size:22px;}
+}
