@@ -1,0 +1,13 @@
+[
+  "index.html",
+  "app.js",
+  "game-core.js",
+  "effects.js",
+  "style.css",
+  "ballpark.css",
+  "challenge.css",
+  "layout.css",
+  "assets/baseball.svg",
+  "assets/stadium.svg",
+  "assets/cheer.wav"
+]
